@@ -2,12 +2,24 @@
   description = "Common dev environments";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  rust-overlay.url = "github:oxalica/rust-overlay";
 
   outputs =
-    { self, nixpkgs }:
+    {
+      self,
+      nixpkgs,
+      rust-overlay,
+    }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          rust-overlay.overlays.default
+        ];
+      };
+
     in
     {
       devShells.${system} = {
