@@ -1,7 +1,8 @@
 { pkgs }:
+with pkgs;
 [
-  pkgs.gtk4
-  pkgs.pkg-config
-  pkgs.gobject-introspection
-  pkgs.glib
+  gtk4
+  pkg-config
+  gobject-introspection
+  glib
 ]

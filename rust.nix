@@ -1,8 +1,13 @@
 { pkgs }:
+with pkgs;
 [
-  pkgs.rust-bin.stable.latest
-  pkgs.rust-analyzer
-  pkgs.cargo
-  pkgs.rustfmt
-  pkgs.clippy
+  (rust-bin.stable.latest.default.override {
+    extensions = [
+      "rust-src"
+      "rustfmt"
+      "clippy"
+      "rust-analyzer"
+    ];
+  })
+  pkg-config
 ]

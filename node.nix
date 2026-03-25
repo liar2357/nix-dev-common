@@ -1,8 +1,9 @@
 { pkgs }:
-with pkgs; [
+with pkgs;
+[
   nodejs_25
   pnpm_10
   typescript-language-server
-  vscode-langservers-extracted 
+  vscode-langservers-extracted
   nodePackages.prettier
 ]
