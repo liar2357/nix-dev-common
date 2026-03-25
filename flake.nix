@@ -1,8 +1,10 @@
 {
   description = "Common dev environments";
 
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-  rust-overlay.url = "github:oxalica/rust-overlay";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+  };
 
   outputs =
     {
@@ -24,15 +26,15 @@
     {
       devShells.${system} = {
         rust = pkgs.mkShell {
-          buildInputs = (import ./rust.nix { inherit pkgs; });
+          buildInputs = import ./rust.nix { inherit pkgs; };
         };
 
         gtk = pkgs.mkShell {
-          buildInputs = (import ./gtk.nix { inherit pkgs; });
+          buildInputs = import ./gtk.nix { inherit pkgs; };
         };
 
         node = pkgs.mkShell {
-          buildInputs = (import ./node.nix { inherit pkgs; });
+          buildInputs = import ./node.nix { inherit pkgs; };
         };
 
         rust_gtk_depnds = pkgs.mkShell {
