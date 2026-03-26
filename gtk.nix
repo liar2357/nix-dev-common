@@ -5,4 +5,5 @@ with pkgs;
   pkg-config
   gobject-introspection
   glib
+  libxml2
 ]
