@@ -10,7 +10,9 @@ let
     ];
   };
 in
+with pkgs;
 [
   rustToolchain
-  pkgs.pkg-config
+  pkg-config
+  taplo
 ]

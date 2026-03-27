@@ -6,4 +6,6 @@ with pkgs;
   gobject-introspection
   glib
   libxml2
+  vscode-langservers-extracted
+  nodePackages.prettier
 ]

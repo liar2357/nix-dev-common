@@ -10,6 +10,7 @@
     jdt-language-server # Java
     nixd # Nix
     lua-language-server # Lua
+    taplo #toml (LSP+Formatter)
 
 # formatter
     nodePackages.prettier # TS/JS/HTML/CSS/JSON
