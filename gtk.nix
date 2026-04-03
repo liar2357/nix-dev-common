@@ -8,5 +8,5 @@ with pkgs;
   glib
   libxml2
   vscode-langservers-extracted
-  nodePackages.prettier
+  prettier
 ]
