@@ -2,6 +2,7 @@
 with pkgs;
 [
   gtk4
+  gtk4-layer-shell
   pkg-config
   gobject-introspection
   glib
