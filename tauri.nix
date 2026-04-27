@@ -1,18 +1,24 @@
 { pkgs }:
 with pkgs;
 [
-  # 🔥 ここが重要
+  # WebKit
   webkitgtk_4_1
   gtk3
   glib
-  gobject-introspection
   libsoup_3
+
+  # 🔥 GPU周り
+  mesa
+  libGL
+  libglvnd
+
+  # 表示系
+  xorg.libX11
+  xorg.libXcursor
+  xorg.libXrandr
+  xorg.libXi
+
+  # その他
   openssl
-
-  # ビルド補助
-  cmake
-  ninja
-
-  # よく忘れるやつ
   dbus
 ]
