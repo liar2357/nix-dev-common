@@ -42,7 +42,10 @@
         };
 
         tauri = pkgs.mkShell {
-          buildInputs = (import ./web.nix { inherit pkgs; }) ++ (import ./rust.nix { inherit pkgs; });
+          buildInputs =
+            (import ./web.nix { inherit pkgs; })
+            ++ (import ./rust.nix { inherit pkgs; })
+            ++ (import ./tauri.nix { inherit pkgs; });
         };
 
         full = pkgs.mkShell {
