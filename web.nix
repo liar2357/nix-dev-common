@@ -1,8 +1,9 @@
 { pkgs }:
 with pkgs;
 [
-  nodejs_25
-  pnpm_10
+  bun
+  nodejs # fallback用（重要）
+  typescript
   typescript-language-server
   vscode-langservers-extracted
   prettier

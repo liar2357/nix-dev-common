@@ -33,12 +33,16 @@
           buildInputs = import ./gtk.nix { inherit pkgs; };
         };
 
-        node = pkgs.mkShell {
-          buildInputs = import ./node.nix { inherit pkgs; };
+        web = pkgs.mkShell {
+          buildInputs = import ./web.nix { inherit pkgs; };
         };
 
         rust_gtk_depnds = pkgs.mkShell {
           buildInputs = (import ./rust.nix { inherit pkgs; }) ++ (import ./gtk.nix { inherit pkgs; });
+        };
+
+        tauri = pkgs.mkShell {
+          buildInputs = (import ./web.nix { inherit pkgs; }) ++ (import ./rust.nix { inherit pkgs; });
         };
 
         full = pkgs.mkShell {
