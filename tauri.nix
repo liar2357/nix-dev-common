@@ -1,9 +1,12 @@
+{ pkgs }:
+
 let
-  webkitBackport = import (fetchTarball {
+  webkitBackport = import (builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/e0f477a570df7375172a08ddb9199c90853c63f0.tar.gz";
+    sha256 = pkgs.lib.fakeSha256;
   }) { };
 in
-{ pkgs }:
+
 with pkgs;
 [
   webkitBackport.webkitgtk_4_1
