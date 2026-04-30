@@ -1,11 +1,23 @@
 { pkgs }:
 
+let
+  oldPkgs =
+    import
+      (builtins.fetchTarball {
+        url = "https://github.com/NixOS/nixpkgs/archive/nixos-25.05.tar.gz";
+        sha256 = "sha256-F8WmEwFoHsnix7rt290R0rFXNJiMbClMZyIC/e+HYf0=";
+      })
+      {
+        system = pkgs.system;
+      };
+in
+
 with pkgs;
 [
-  webkitgtk
+  oldPkgs.webkitgtk_4_0 # ← ここが核心
   gtk3
   glib
-  libsoup_3
+  oldPkgs.libsoup_2 # ← これもセット
 
   # GPU
   mesa
