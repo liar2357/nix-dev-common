@@ -1,20 +1,8 @@
 { pkgs }:
 
-let
-  webkitBackport =
-    import
-      (builtins.fetchTarball {
-        url = "https://github.com/NixOS/nixpkgs/archive/e0f477a570df7375172a08ddb9199c90853c63f0.tar.gz";
-        sha256 = "16yzagh9id7q8m5vq4qcwln9ag0x8cfqlzydzlqi3wysgsk1rz6v";
-      })
-      {
-        system = pkgs.system;
-      };
-in
-
 with pkgs;
 [
-  webkitBackport.webkitgtk_4_1
+  webkitgtk
   gtk3
   glib
   libsoup_3
