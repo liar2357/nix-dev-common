@@ -1,7 +1,6 @@
 { pkgs }:
 with pkgs;
 [
-  webkitgtk_4_1
   gtk3
   glib
   libsoup_3
@@ -25,4 +24,13 @@ with pkgs;
 
   openssl
   dbus
+]
+
+let
+  webkitBackport = import (fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/e0f477a570df7375172a08ddb9199c90853c63f0.tar.gz";
+  }) {};
+in
+[
+  webkitBackport.webkitgtk_4_1
 ]
