@@ -7,12 +7,19 @@ with pkgs;
   glib
   libsoup_3
 
-  # 🔥 GPU周り
+  # GPU / EGL（重要）
   mesa
   libGL
   libglvnd
+  libEGL
+  libgbm
 
-  # 表示系
+  # Wayland
+  wayland
+  wayland-protocols
+  libxkbcommon
+
+  # X11 fallback
   xorg.libX11
   xorg.libXcursor
   xorg.libXrandr
