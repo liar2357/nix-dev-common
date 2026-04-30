@@ -38,4 +38,6 @@ with pkgs;
 
   openssl
   dbus
+  pkg-config
+  wrapGAppsHook
 ]
