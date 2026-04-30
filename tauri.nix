@@ -1,17 +1,15 @@
 { pkgs }:
 with pkgs;
 [
-  # WebKit
   webkitgtk_4_1
   gtk3
   glib
   libsoup_3
 
-  # GPU / EGL（重要）
+  # GPU
   mesa
   libGL
   libglvnd
-  libEGL
   libgbm
 
   # Wayland
@@ -25,7 +23,6 @@ with pkgs;
   xorg.libXrandr
   xorg.libXi
 
-  # その他
   openssl
   dbus
 ]
