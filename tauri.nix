@@ -17,7 +17,7 @@ with pkgs;
   oldPkgs.webkitgtk_4_0 # ← ここが核心
   gtk3
   glib
-  oldPkgs.libsoup_2 # ← これもセット
+  oldPkgs.libsoup_2_4 # ← これもセット
 
   # GPU
   mesa
