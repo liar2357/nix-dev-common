@@ -46,14 +46,13 @@
             (import ./web.nix { inherit pkgs; })
             ++ (import ./rust.nix { inherit pkgs; })
             ++ (import ./tauri.nix { inherit pkgs; });
+
+          shellHook = ''
+            export LD_LIBRARY_PATH=/run/opengl-driver/lib:$LD_LIBRARY_PATH
+            export LIBGL_DRIVERS_PATH=/run/opengl-driver/lib/dri
+          '';
         };
 
-        full = pkgs.mkShell {
-          buildInputs =
-            (import ./rust.nix { inherit pkgs; })
-            ++ (import ./gtk.nix { inherit pkgs; })
-            ++ (import ./node.nix { inherit pkgs; });
-        };
       };
     };
 }
