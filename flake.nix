@@ -50,6 +50,9 @@
           shellHook = ''
             export LD_LIBRARY_PATH=/run/opengl-driver/lib:$LD_LIBRARY_PATH
             export LIBGL_DRIVERS_PATH=/usr/lib64/dri
+            export GDK_BACKEND=x11
+            export WEBKIT_DISABLE_COMPOSITING_MODE=1
+            export WEBKIT_FORCE_SANDBOX=0
           '';
         };
 
