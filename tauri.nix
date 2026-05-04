@@ -37,6 +37,4 @@ with pkgs;
 
   # --- optional（デバッグ用） ---
   glib-networking
-
-  nixgl.auto.nixGLDefault
 ]

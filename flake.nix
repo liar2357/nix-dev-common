@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs =
@@ -12,7 +11,6 @@
       self,
       nixpkgs,
       rust-overlay,
-      nixgl,
     }:
     let
       system = "x86_64-linux";
@@ -21,7 +19,6 @@
         inherit system;
         overlays = [
           rust-overlay.overlays.default
-          nixgl.overlay
         ];
       };
 
