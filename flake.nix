@@ -49,7 +49,7 @@
 
           shellHook = ''
             export LD_LIBRARY_PATH=/run/opengl-driver/lib:$LD_LIBRARY_PATH
-            export LIBGL_DRIVERS_PATH=/run/opengl-driver/lib/dri
+            export LIBGL_DRIVERS_PATH=/usr/lib64/dri
           '';
         };
 
