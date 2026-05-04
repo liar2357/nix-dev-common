@@ -1,43 +1,39 @@
+# tauri.nix
 { pkgs }:
-
-let
-  oldPkgs =
-    import
-      (builtins.fetchTarball {
-        url = "https://github.com/NixOS/nixpkgs/archive/nixos-25.05.tar.gz";
-        sha256 = "sha256-F8WmEwFoHsnix7rt290R0rFXNJiMbClMZyIC/e+HYf0=";
-      })
-      {
-        system = pkgs.system;
-      };
-in
 
 with pkgs;
 [
-  oldPkgs.webkitgtk_4_0 # ← ここが核心
+  # --- 必須コア ---
+  pkg-config
+  openssl
+
+  # --- Tauri / WebKitGTK ---
+  webkitgtk_4_1
   gtk3
   glib
-  oldPkgs.libsoup_2_4 # ← これもセット
+  gobject-introspection
+  libsoup_3
+  librsvg
 
-  # GPU
-  mesa
-  libGL
-  libglvnd
-  libgbm
+  # --- 描画まわり ---
+  cairo
+  gdk-pixbuf
+  pango
+  atk
 
-  # Wayland
-  wayland
-  wayland-protocols
-  libxkbcommon
-
-  # X11 fallback
+  # --- X11系（Waylandでも保険で入れる） ---
   xorg.libX11
   xorg.libXcursor
   xorg.libXrandr
   xorg.libXi
 
-  openssl
-  dbus
-  pkg-config
-  wrapGAppsHook3
+  # --- GPU/OpenGL（ないとハマることある） ---
+  libGL
+  mesa
+
+  # --- 開発補助 ---
+  cargo-tauri
+
+  # --- optional（デバッグ用） ---
+  glib-networking
 ]
