@@ -41,8 +41,8 @@
           buildInputs = (import ./rust.nix { inherit pkgs; }) ++ (import ./gtk.nix { inherit pkgs; });
 
           shellHook = ''
-            	    export RUST_BACKTRACE=1
-            	  '';
+            export RUST_BACKTRACE=full
+          '';
         };
 
         tauri = pkgs.mkShell {
@@ -52,7 +52,7 @@
             ++ (import ./tauri.nix { inherit pkgs; });
 
           shellHook = ''
-            export RUST_BACKTRACE=1
+            export RUST_BACKTRACE=full
           '';
         };
 
