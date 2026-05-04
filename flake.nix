@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs =
@@ -11,6 +12,7 @@
       self,
       nixpkgs,
       rust-overlay,
+      nixgl,
     }:
     let
       system = "x86_64-linux";
@@ -19,6 +21,7 @@
         inherit system;
         overlays = [
           rust-overlay.overlays.default
+          nixgl.overlay
         ];
       };
 
@@ -27,10 +30,10 @@
       devShells.${system} = {
         rust = pkgs.mkShell {
           buildInputs = import ./rust.nix { inherit pkgs; };
-        };
 
-        gtk = pkgs.mkShell {
-          buildInputs = import ./gtk.nix { inherit pkgs; };
+          shellHook = ''
+            	    export RUST_BACKTRACE=1
+            	  '';
         };
 
         web = pkgs.mkShell {
@@ -39,6 +42,10 @@
 
         rust_gtk_depnds = pkgs.mkShell {
           buildInputs = (import ./rust.nix { inherit pkgs; }) ++ (import ./gtk.nix { inherit pkgs; });
+
+          shellHook = ''
+            	    export RUST_BACKTRACE=1
+            	  '';
         };
 
         tauri = pkgs.mkShell {
@@ -48,12 +55,7 @@
             ++ (import ./tauri.nix { inherit pkgs; });
 
           shellHook = ''
-                export LD_LIBRARY_PATH=/run/opengl-driver/lib:$LD_LIBRARY_PATH
-                export LIBGL_DRIVERS_PATH=/usr/lib64/dri
-                export GDK_BACKEND=x11
-                export WEBKIT_DISABLE_COMPOSITING_MODE=1
-                export WEBKIT_FORCE_SANDBOX=0
-            	export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
+            export RUST_BACKTRACE=1
           '';
         };
 
