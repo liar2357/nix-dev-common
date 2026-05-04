@@ -29,6 +29,7 @@ with pkgs;
 
   # --- GPU/OpenGL（ないとハマることある） ---
   libGL
+  libglvnd
   mesa
 
   # --- 開発補助 ---
