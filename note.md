@@ -4,9 +4,9 @@
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint
     pyright # Python
     bash-language-server # Shell
-    phpactor # PHP
+    intelephense # PHP
     solargraph # ruby
-    sqls # SQL
+    sql-language-server # SQL
     jdt-language-server # Java
     nixd # Nix
     lua-language-server # Lua
