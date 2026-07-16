@@ -17,6 +17,7 @@ with pkgs;
   gobject-introspection
   libsoup_3
   librsvg
+  gsettings-desktop-schemas
 
   # --- 描画まわり ---
   cairo
