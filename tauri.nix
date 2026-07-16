@@ -10,6 +10,9 @@ with pkgs;
   # --- Tauri / WebKitGTK ---
   webkitgtk_4_1
   gtk3
+  gtk3.dev
+  gtk4
+  gtk4.dev
   glib
   gobject-introspection
   libsoup_3
