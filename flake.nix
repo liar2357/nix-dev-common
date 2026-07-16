@@ -76,6 +76,8 @@
 
           profile = ''
             export RUST_BACKTRACE=full
+
+            export PKG_CONFIG_PATH="${pkgs.gtk3.dev}/lib/pkgconfig:${pkgs.gtk3.dev}/share/pkgconfig:${pkgs.gtk4.dev}/lib/pkgconfig:$PKG_CONFIG_PATH"
           '';
         };
 
