@@ -38,7 +38,4 @@ with pkgs;
   # --- optional（デバッグ用） ---
   glib-networking
 
-  # --- AppImage ---
-  appimagetool
-  linuxdeploy
 ]
