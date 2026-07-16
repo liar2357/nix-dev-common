@@ -22,36 +22,59 @@
         ];
       };
 
+      rustDeps = import ./rust.nix { inherit pkgs; };
+      webDeps = import ./web.nix { inherit pkgs; };
+      gtkDeps = import ./gtk.nix { inherit pkgs; };
+      tauriDeps = import ./tauri.nix { inherit pkgs; };
+
+      tauriDepsAll = webDeps ++ rustDeps ++ tauriDeps;
+
     in
     {
       devShells.${system} = {
-        rust = pkgs.mkShell {
-          buildInputs = import ./rust.nix { inherit pkgs; };
 
-          shellHook = ''
-            	    export RUST_BACKTRACE=1
-            	  '';
+        rust = pkgs.mkShell {
+          buildInputs = rustDeps;
         };
 
         web = pkgs.mkShell {
-          buildInputs = import ./web.nix { inherit pkgs; };
+          buildInputs = webDeps;
         };
 
-        rust_gtk_depnds = pkgs.mkShell {
-          buildInputs = (import ./rust.nix { inherit pkgs; }) ++ (import ./gtk.nix { inherit pkgs; });
+        rust_gtk = pkgs.mkShell {
+          buildInputs = rustDeps ++ gtkDeps;
+        };
+
+        tauri = pkgs.mkShell {
+          buildInputs = tauriDepsAll;
 
           shellHook = ''
             export RUST_BACKTRACE=full
           '';
         };
 
-        tauri = pkgs.mkShell {
-          buildInputs =
-            (import ./web.nix { inherit pkgs; })
-            ++ (import ./rust.nix { inherit pkgs; })
-            ++ (import ./tauri.nix { inherit pkgs; });
+        tauri-fhs = pkgs.buildFHSEnv {
+          name = "tauri-fhs";
 
-          shellHook = ''
+          targetPkgs = pkgs: tauriDepsAll;
+
+          multiPkgs =
+            pkgs: with pkgs; [
+              zlib
+              libGL
+              libxkbcommon
+              libxcb
+              libX11
+              libXcursor
+              libXi
+              libXrandr
+              libXinerama
+              libXext
+            ];
+
+          runScript = "bash";
+
+          profile = ''
             export RUST_BACKTRACE=full
           '';
         };
