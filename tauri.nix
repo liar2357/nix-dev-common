@@ -4,7 +4,7 @@
 with pkgs;
 [
   # --- 必須コア ---
-  pkg-config
+  pkgconf
   openssl
 
   # --- Tauri / WebKitGTK ---
